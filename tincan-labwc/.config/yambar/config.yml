@@ -1,0 +1,38 @@
+block: &block {stack: [{background: {color: 2d3039ff}}, {border: {size: 8, color: 161821ff}}]}
+
+bar:
+  height: 48
+  location: top
+  background: 161821ff
+  font: Scientifica:pixelsize=22
+  spacing: 0
+  margin: 0
+
+  border:
+    width: 8
+    margin: 8
+    color: 2d3039ff
+
+  left:
+    - label:
+        content: {string: {text: "  Tin Can Linux :D  ", deco: *block}}
+
+  right:
+    - mem:
+        poll-interval: 2500
+        content: {string: {text: "  RAM {percent_used}%  ", deco: *block}}
+
+    - cpu:
+        poll-interval: 2500
+        content: {map: {conditions: {id < 0: {string: {text: "  CPU {cpu}%  ", deco: *block}}}}}
+
+    - network:
+        content: {map: {conditions: {type == ether || type == wlan: {string: {text: "  NET {state}  ", deco: *block}}}}}
+
+    - battery:
+        name: BAT1
+        poll-interval: 30000
+        content: {string: {text: "  BAT {capacity}%  ", deco: *block}}
+
+    - clock:
+        content: {string: {text: "  {date} {time}  ", deco: *block}}

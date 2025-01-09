@@ -1,0 +1,14 @@
+#!/bin/sh
+
+if [ $(tty) = "/dev/tty1" ]; then
+    labwc
+fi
+
+# Prompt
+PS1="[\e[94m\w\e[0m] \e[92m$\e[0m "
+
+# Path
+export PATH=$HOME/bin:$PATH
+
+# Sysfetch
+clear && zfetch
